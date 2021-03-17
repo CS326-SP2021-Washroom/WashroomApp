@@ -1,0 +1,12 @@
+{
+  "name": "WashroomApp",
+  "displayName": "WashroomApp",
+  "expo": {
+    "name": "WashroomApp",
+    "slug": "WashroomApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
