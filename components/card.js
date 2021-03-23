@@ -1,7 +1,5 @@
 import React from 'react';
-import { colorCodes, dyColorCodes } from '../styles/global';
-import { View } from 'react-native';
-import { DynamicStyleSheet, useDynamicValue } from 'react-native-dynamic';
+import { View, StyleSheet } from 'react-native';
 
 /**
  * Card constructs different styles of cards 
@@ -10,34 +8,32 @@ import { DynamicStyleSheet, useDynamicValue } from 'react-native-dynamic';
  * @return {View} card content for either circle or regular card
  */
 export default function Card(props) {
-    const dyStyles = useDynamicValue(styles);
 
     return (
         //props.style allows you to pass in custom styles
-        <View style={[(props.type === 'circle' ? dyStyles.circleCard : dyStyles.card), props.style]}> 
-            <View style={dyStyles.cardContent}>
+        <View style={[(props.type === 'circle' ? styles.circleCard : styles.card), props.style]}> 
+            <View style={styles.cardContent}>
                 { props.children }
             </View>
         </View>
     );
 }
 
-const styles = new DynamicStyleSheet ({
+const styles = StyleSheet.create({
     card: {
         borderRadius: 6,
         elevation: 3,
-        backgroundColor: dyColorCodes.card,                 //#ffd699 is a light orange color
+        backgroundColor: '#6699ff',                 //#6699ff is a light blue color
         shadowOffset: {width: 1, height: 1},
         shadowColor: '#333',
         shadowOpacity: 0.3,
         shadowRadius: 2,
         marginHorizontal: 4,
         marginVertical: 6,
-        
     },
     circleCard: {
         borderRadius: 75,
-        backgroundColor: colorCodes.card,                 //#ffd699 is a light orange color
+        backgroundColor: "#6699ff",                 //#6699ff is a light blue color
         shadowOffset: {width: 1, height: 1},
         shadowColor: '#000',
         shadowOpacity: 0.3,
