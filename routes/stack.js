@@ -32,6 +32,15 @@ export default function Navigator( {navigation} ) {
                     headerLeft: () =>  <Header navigation={navigation} />
                 }}
             />
+            <Stack.Screen
+                name="Dorm"
+                component={Dorm}
+                options={{
+                    title: 'Dorm',
+                    headerTitleAlign: {textAlign:'center'},
+                    headerLeft: () =>  <Header navigation={navigation} />
+                }}
+            />
         </Stack.Navigator>
     );
 };

@@ -3,6 +3,9 @@ import { ImageBackground, StyleSheet, View, Text, TouchableOpacity, TouchableWit
     TextInput, Alert } from 'react-native';
 import Card from '../components/card';
 import { MaterialIcons } from '@expo/vector-icons';
+import { FlatList } from 'react-native-gesture-handler';
+
+const background = { uri: "https://calvin.edu/contentAsset/image/25cbc0c3-c2c7-438b-8abf-4bd1ebb61d95/featureImage/filter/Jpeg/jpeg_q/80" };
 
 /**
  * Home displays Home screen
@@ -13,19 +16,33 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Home({ navigation }) {
 
+    const[places, setPlaces] = useState([
+        {title: 'Dorms', key: '1'},
+        {title: 'Knollcrest East', key: '2', group: ["Alpha", "Beta", "Delta", "Gamma", "Kappa", "Theta", "Epsilon", "Phi", "Chi", "Zeta", "Lambda"]},
+    ])
+
     return (
         <View style={styles.container}>
-            <Card style={{flex: 1, marginHorizontal: 20, marginVertical: 20}}>
+
+            {/* <FlatList data={places} renderItem={({ item }) => (
                 <TouchableOpacity>
-                <Text>Dorm</Text>
+                    <Card style={{marginHorizontal: 20, marginVertical: 20}}>
+                        <Text>{ item.title }</Text>
+                    </Card>
                 </TouchableOpacity>
-            </Card>
-            <Card style={{flex: 1, marginHorizontal: 20, marginVertical: 20}}>
-                <TouchableOpacity>
-                <Text>Knollcrest East</Text>
-                </TouchableOpacity>
-            </Card>
-            {/* <StatusBar style="auto" /> */}
+            )}/> */}
+
+            <TouchableOpacity onPress={() => navigation.navigate('Dorm')}>
+                <Card image={background}>
+                    <Text>Dorm</Text>
+                </Card>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate('Dorm')}>
+                <Card>
+                    <Text>Knollcrest East</Text>
+                </Card>
+            </TouchableOpacity> 
         </View>
     );
 }
@@ -37,6 +54,7 @@ const styles = StyleSheet.create({
     //   alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'column',
+      
     },
   });
   
