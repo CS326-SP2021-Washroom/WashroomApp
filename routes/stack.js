@@ -7,6 +7,7 @@ import Home from '../screens/home';
 import Dorm from '../screens/dormPicker';
 import Settings from '../screens/settings';
 import Watcher from '../screens/watcher';
+import Apartment from '../screens/apartPicker';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,15 @@ export default function Navigator( {navigation} ) {
                 component={Dorm}
                 options={{
                     title: 'Dorm',
+                    headerTitleAlign: {textAlign:'center'},
+                    headerLeft: () =>  <Header navigation={navigation} />
+                }}
+            />
+            <Stack.Screen
+                name="Apartment"
+                component={Apartment}
+                options={{
+                    title: 'Apartment',
                     headerTitleAlign: {textAlign:'center'},
                     headerLeft: () =>  <Header navigation={navigation} />
                 }}

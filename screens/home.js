@@ -38,7 +38,7 @@ export default function Home({ navigation }) {
                 </Card>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Dorm')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Apartment')}>
                 <Card>
                     <Text>Knollcrest East</Text>
                 </Card>
