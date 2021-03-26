@@ -4,13 +4,13 @@ import { ImageBackground, StyleSheet, View, Text, TouchableOpacity, TouchableWit
 import Card from '../components/card';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
-
+import { globalStyles } from '../components/globalStyle'
 
 /**
- * Home displays Home screen
+ * Dorm displays dorm picker screen
  * @author Andrew Baker (andrewJamesBaker)
  * @param {any} navigation
- * @return {HomeStack} Home screen with info based on user info
+ * @return {HomeStack} Dorm screen allowing for for users to pick the dorm.
  */
 
 export default function Dorm({ navigation }) {
@@ -41,8 +41,8 @@ export default function Dorm({ navigation }) {
   ])
 
   return (
-    <View style={styles.containerAcross}>
-      <View style={styles.containter}>
+    <View style={globalStyles.containerAcross}>
+      <View style={globalStyles.containter}>
         <FlatList data={maleDorms} renderItem={({ item }) => (
           <TouchableOpacity>
               <Card style={{marginHorizontal: 20, marginVertical: 20}}>
@@ -52,7 +52,7 @@ export default function Dorm({ navigation }) {
         )}/>
       </View>
 
-      <View style={styles.containter}>
+      <View style={globalStyles.containter}>
         <FlatList data={femaleDorms} renderItem={({ item }) => (
           <TouchableOpacity>
               <Card style={{marginHorizontal: 20, marginVertical: 20}}>
@@ -62,7 +62,7 @@ export default function Dorm({ navigation }) {
         )}/>
       </View>
 
-      <View style={styles.containter}>
+      <View style={globalStyles.containter}>
         <FlatList data={extraDorms} renderItem={({ item }) => (
           <TouchableOpacity>
               <Card style={{marginHorizontal: 20, marginVertical: 20}}>
@@ -74,19 +74,3 @@ export default function Dorm({ navigation }) {
     </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      // backgroundColor: '#fff',
-    //   alignItems: 'center',
-      // justifyContent: 'center',
-      flexDirection: 'column',
-    },
-    containerAcross: {
-      flex: 1, 
-      flexDirection: 'row',
-      justifyContent: 'center',
-    },
-  });
-  

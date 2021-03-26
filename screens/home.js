@@ -4,6 +4,7 @@ import { ImageBackground, StyleSheet, View, Text, TouchableOpacity, TouchableWit
 import Card from '../components/card';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
+import { globalStyles } from '../components/globalStyle'
 
 const background = { uri: "https://calvin.edu/contentAsset/image/25cbc0c3-c2c7-438b-8abf-4bd1ebb61d95/featureImage/filter/Jpeg/jpeg_q/80" };
 
@@ -22,7 +23,7 @@ export default function Home({ navigation }) {
     ])
 
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.container}>
 
             {/* <FlatList data={places} renderItem={({ item }) => (
                 <TouchableOpacity>
@@ -47,14 +48,4 @@ export default function Home({ navigation }) {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-    //   alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'column',
-      
-    },
-  });
   

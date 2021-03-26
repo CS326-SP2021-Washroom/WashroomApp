@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground, Image } from 'react-native';
 
 /**
  * Card constructs different styles of cards 
@@ -12,11 +12,10 @@ export default function Card(props) {
     return (
         //props.style allows you to pass in custom styles
         <View style={[(props.type === 'circle' ? styles.circleCard : styles.card), props.style]}>
-            {/* <ImageBackground source={props.image} style={{borderRadius: 6, position: 'relative'}}>  */}
+            {/* <Image source={{uri: 'https://cdn.pixabay.com/photo/2017/06/28/04/49/bubbles-2449751_640.png'}} style={{flex: 1, position: 'absolute'}}/>  */}
                 <View style={styles.cardContent}>
                     { props.children }
                 </View>
-            {/* </ImageBackground> */}
         </View>
     );
 }
@@ -48,7 +47,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 18,
         marginVertical: 20,
         justifyContent:'center',
-        borderRadius: 6,
     },
     image: {
         borderRadius: 6,

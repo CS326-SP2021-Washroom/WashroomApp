@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { ImageBackground, StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback, Keyboard, 
-    TextInput, Alert } from 'react-native';
+import { ImageBackground, StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
 import Card from '../components/card';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
-
+import { globalStyles } from '../components/globalStyle'
 
 /**
- * Home displays Home screen
+ * Apartment displays the apartment picker
  * @author Andrew Baker (andrewJamesBaker)
  * @param {any} navigation
- * @return {HomeStack} Home screen with info based on user info
+ * @return {Stack} Apartment picker screen with info based on user info
  */
 
 export default function Apartment({ navigation }) {
@@ -30,8 +29,7 @@ export default function Apartment({ navigation }) {
   ])
 
   return (
-    <View style={styles.containerAcross}>
-      <View style={styles.containter}>
+      <View style={globalStyles.containter}>
         <FlatList data={apartments} renderItem={({ item }) => (
           <TouchableOpacity>
               <Card style={{marginHorizontal: 20, marginVertical: 20}}>
@@ -41,23 +39,6 @@ export default function Apartment({ navigation }) {
         )}/>
       </View>
 
-    </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      // backgroundColor: '#fff',
-    //   alignItems: 'center',
-      // justifyContent: 'center',
-      flexDirection: 'column',
-      flexWrap: 'wrap'
-    },
-    containerAcross: {
-      flex: 1, 
-      flexDirection: 'row',
-      justifyContent: 'center',
-    },
-  });
   
