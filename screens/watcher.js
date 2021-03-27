@@ -9,7 +9,7 @@ export default function Watcher({ navigation }) {
 
     return (
         <View style={styles.container}>
-
+          <Text>watcher</Text>
         </View>
     );
 }

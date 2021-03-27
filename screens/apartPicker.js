@@ -29,15 +29,14 @@ export default function Apartment({ navigation }) {
   ])
 
   return (
-      <View style={globalStyles.containter}>
-        <FlatList data={apartments} renderItem={({ item }) => (
-          <TouchableOpacity>
-              <Card style={{marginHorizontal: 20, marginVertical: 20}}>
+
+        <FlatList style={globalStyles.list} data={apartments} renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
+              <Card>
                   <Text>{ item.title }</Text>
               </Card>
           </TouchableOpacity>
         )}/>
-      </View>
 
     );
 }

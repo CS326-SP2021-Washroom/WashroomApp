@@ -3,7 +3,6 @@ import { ImageBackground, StyleSheet, View, Text, TouchableOpacity, TouchableWit
     TextInput, Alert } from 'react-native';
 import Card from '../components/card';
 import { MaterialIcons } from '@expo/vector-icons';
-import { FlatList } from 'react-native-gesture-handler';
 import { globalStyles } from '../components/globalStyle'
 
 const background = { uri: "https://calvin.edu/contentAsset/image/25cbc0c3-c2c7-438b-8abf-4bd1ebb61d95/featureImage/filter/Jpeg/jpeg_q/80" };
@@ -12,38 +11,29 @@ const background = { uri: "https://calvin.edu/contentAsset/image/25cbc0c3-c2c7-4
  * Home displays Home screen
  * @author Andrew Baker (andrewJamesBaker)
  * @param {any} navigation
- * @return {HomeStack} Home screen with info based on user info
+ * @return {Stack} Home screen with info based on user info
  */
 
 export default function Home({ navigation }) {
 
-    const[places, setPlaces] = useState([
-        {title: 'Dorms', key: '1'},
-        {title: 'Knollcrest East', key: '2', group: ["Alpha", "Beta", "Delta", "Gamma", "Kappa", "Theta", "Epsilon", "Phi", "Chi", "Zeta", "Lambda"]},
-    ])
-
     return (
         <View style={globalStyles.container}>
 
-            {/* <FlatList data={places} renderItem={({ item }) => (
-                <TouchableOpacity>
-                    <Card style={{marginHorizontal: 20, marginVertical: 20}}>
-                        <Text>{ item.title }</Text>
+            <View style={{flex:1, alignItems: 'stretch'}}>
+                <TouchableOpacity onPress={() => navigation.navigate('Dorm')}>
+                    <Card>
+                        <Text>Dorm</Text>
                     </Card>
                 </TouchableOpacity>
-            )}/> */}
+            </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Dorm')}>
-                <Card image={background}>
-                    <Text>Dorm</Text>
-                </Card>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => navigation.navigate('Apartment')}>
-                <Card>
-                    <Text>Knollcrest East</Text>
-                </Card>
-            </TouchableOpacity> 
+            <View style={{flex:1, alignItems: 'stretch'}}>
+                <TouchableOpacity onPress={() => navigation.navigate('Apartment')}>
+                    <Card>
+                        <Text>Knollcrest East</Text>
+                    </Card>
+                </TouchableOpacity>
+            </View> 
         </View>
     );
 }

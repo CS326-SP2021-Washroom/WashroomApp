@@ -42,35 +42,29 @@ export default function Dorm({ navigation }) {
 
   return (
     <View style={globalStyles.containerAcross}>
-      <View style={globalStyles.containter}>
-        <FlatList data={maleDorms} renderItem={({ item }) => (
-          <TouchableOpacity>
-              <Card style={{marginHorizontal: 20, marginVertical: 20}}>
+        <FlatList style={globalStyles.list} data={maleDorms} renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
+              <Card>
                   <Text>{ item.title }</Text>
               </Card>
           </TouchableOpacity>
         )}/>
-      </View>
 
-      <View style={globalStyles.containter}>
-        <FlatList data={femaleDorms} renderItem={({ item }) => (
-          <TouchableOpacity>
-              <Card style={{marginHorizontal: 20, marginVertical: 20}}>
+        <FlatList style={globalStyles.list} data={femaleDorms} renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
+              <Card>
                   <Text>{ item.title }</Text>
               </Card>
           </TouchableOpacity>
         )}/>
-      </View>
 
-      <View style={globalStyles.containter}>
-        <FlatList data={extraDorms} renderItem={({ item }) => (
-          <TouchableOpacity>
-              <Card style={{marginHorizontal: 20, marginVertical: 20}}>
+        <FlatList style={globalStyles.list} data={extraDorms} renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
+              <Card>
                   <Text>{ item.title }</Text>
               </Card>
           </TouchableOpacity>
         )}/>
-      </View>
     </View>
     );
 }

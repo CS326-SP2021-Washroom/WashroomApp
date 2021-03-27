@@ -51,6 +51,15 @@ export default function Navigator( {navigation} ) {
                     headerLeft: () =>  <Header navigation={navigation} />
                 }}
             />
+            <Stack.Screen
+                name="Watcher"
+                component={Watcher}
+                options={{
+                    title: 'Watcher',
+                    headerTitleAlign: {textAlign:'center'},
+                    headerLeft: () =>  <Header navigation={navigation} />
+                }}
+            />
         </Stack.Navigator>
     );
 };
