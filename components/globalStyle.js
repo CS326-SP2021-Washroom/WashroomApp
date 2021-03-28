@@ -13,9 +13,34 @@ export const globalStyles = StyleSheet.create({
       },
       list: {
         flex: 1,
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
         flexDirection: 'column',
         
       },
-
+      titleText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        alignSelf: 'center'
+      },
+      subtitleText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        alignSelf: 'center'
+      },
+      digitStyleWasher: {
+        backgroundColor: '#FFF'
+      },
+      digitTextStyleWasher: {
+        color: '#3333cc'
+      },
+      digitStyleDryer: {
+        backgroundColor: '#FFF'
+      },
+      digitTextStyleDryer: {
+        color: '#ff3300'
+      },
+      background: {
+        width: '100%',
+        height: '100%'
+      }
 })

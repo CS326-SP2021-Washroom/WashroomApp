@@ -30,7 +30,6 @@ export default function Navigator( {navigation} ) {
                 options={{
                     title: 'Washroom',
                     headerTitleAlign: {textAlign:'center'},
-                    headerLeft: () =>  <Header navigation={navigation} />
                 }}
             />
             <Stack.Screen
@@ -39,7 +38,6 @@ export default function Navigator( {navigation} ) {
                 options={{
                     title: 'Dorm',
                     headerTitleAlign: {textAlign:'center'},
-                    headerLeft: () =>  <Header navigation={navigation} />
                 }}
             />
             <Stack.Screen
@@ -48,7 +46,6 @@ export default function Navigator( {navigation} ) {
                 options={{
                     title: 'Apartment',
                     headerTitleAlign: {textAlign:'center'},
-                    headerLeft: () =>  <Header navigation={navigation} />
                 }}
             />
             <Stack.Screen
@@ -57,7 +54,6 @@ export default function Navigator( {navigation} ) {
                 options={{
                     title: 'Watcher',
                     headerTitleAlign: {textAlign:'center'},
-                    headerLeft: () =>  <Header navigation={navigation} />
                 }}
             />
         </Stack.Navigator>
