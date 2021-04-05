@@ -11,17 +11,17 @@ export default function Card(props) {
 
     return (
         //props.style allows you to pass in custom styles
-        <View style={[(props.type === 'circle' ? styles.circleCard : styles.card), props.style]}> 
-            <View style={styles.cardContent}>
-                { props.children }
-            </View>
+        <View style={[(props.type === 'circle' ? styles.circleCard : styles.card), props.style]}>
+                <View style={styles.cardContent}>
+                    { props.children }
+                </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     card: {
-        borderRadius: 6,
+        borderRadius: 16,
         elevation: 3,
         backgroundColor: '#6699ff',                 //#6699ff is a light blue color
         shadowOffset: {width: 1, height: 1},
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         marginHorizontal: 4,
         marginVertical: 6,
+        flex: 1
     },
     circleCard: {
         borderRadius: 75,
@@ -45,6 +46,7 @@ const styles = StyleSheet.create({
     cardContent: {
         marginHorizontal: 18,
         marginVertical: 20,
-        justifyContent:'center'
-    }
+        justifyContent:'center',
+        alignItems: 'center'
+    },
 });
