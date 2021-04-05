@@ -30,7 +30,7 @@ export default function Dorm({ navigation }) {
 
   const [femaleDorms, setFemaleDorms] = useState([
     { title: 'Heyns', key: '1' },
-    { title: 'Eldersveld', key: '2' },
+    { title: 'Kalsbeek', key: '2' },
     { title: 'Eldersveld', key: '3' },
     { title: 'Rooks', key: '4' },
     { title: 'Veenstra', key: '5' },

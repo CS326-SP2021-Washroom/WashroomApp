@@ -1,18 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { ImageBackground, StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback, Keyboard, 
-    TextInput, Alert } from 'react-native';
+import {
+    ImageBackground, StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback, Keyboard,
+    TextInput, Alert
+} from 'react-native';
 import Card from '../components/card';
 import { MaterialIcons } from '@expo/vector-icons';
-import { globalStyles } from '../components/globalStyle'
-
+import Styler from '../components/styler'
 
 export default function Settings({ navigation }) {
 
     return (
-        <View style={globalStyles.container}>
-
-        </View>
+        <Styler>
+            <View style={styles.bar}>
+                <Text style={styles.barContent}>Settings{data.firstname}</Text>
+            </View>
+        </Styler>
     );
 }
 
-  
+const styles = StyleSheet.create({
+    bar: {
+        backgroundColor: "#6699ff",
+        alignItems: 'stretch',
+        opacity: 0.7,
+        // marginVertical: 15,
+    },
+    barContent: {
+        marginHorizontal: 18,
+        marginVertical: 20,
+        fontSize: 18,
+        fontWeight: 'bold',
+        // color: colorCodes.cardText,
+        textAlign: 'center',
+    },
+})

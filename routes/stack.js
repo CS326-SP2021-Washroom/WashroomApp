@@ -1,8 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-
-import Header from '../components/header';
+import {MaterialIcons} from '@expo/vector-icons';
 import Home from '../screens/home';
 import Dorm from '../screens/dormPicker';
 import Settings from '../screens/settings';
@@ -30,6 +28,10 @@ export default function Navigator( {navigation} ) {
                 options={{
                     title: 'Washroom',
                     headerTitleAlign: {textAlign:'center'},
+                    headerRight: () => (
+                        <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
+                        onPress={() => navigation.navigate('Settings')}/>       //navigation returns an error
+                    ),
                 }}
             />
             <Stack.Screen
@@ -38,6 +40,10 @@ export default function Navigator( {navigation} ) {
                 options={{
                     title: 'Dorm',
                     headerTitleAlign: {textAlign:'center'},
+                    headerRight: () => (
+                        <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
+                        onPress={() => navigation.navigate('Settings')}/>
+                    ),
                 }}
             />
             <Stack.Screen
@@ -46,6 +52,10 @@ export default function Navigator( {navigation} ) {
                 options={{
                     title: 'Apartment',
                     headerTitleAlign: {textAlign:'center'},
+                    headerRight: () => (
+                        <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
+                        onPress={() => navigation.navigate('Settings')}/>
+                    ),
                 }}
             />
             <Stack.Screen
@@ -54,8 +64,24 @@ export default function Navigator( {navigation} ) {
                 options={{
                     title: 'Watcher',
                     headerTitleAlign: {textAlign:'center'},
+                    headerRight: () => (
+                        <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
+                        onPress={() => navigation.navigate('Settings')}/>
+                    ),
+                }}
+            />
+            <Stack.Screen
+                name="Settings"
+                component={Settings}
+                options={{
+                    title: 'Settings',
+                    headerTitleAlign: {textAlign:'center'},
                 }}
             />
         </Stack.Navigator>
     );
 };
+
+
+
+
