@@ -65,8 +65,7 @@ export default function Navigator( {navigation} ) {
                     title: 'Watcher',
                     headerTitleAlign: {textAlign:'center'},
                     headerRight: () => (
-                        <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
-                        onPress={() => navigation.navigate('Settings')}/>
+                        <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}} onPress={() => navigation.navigate('Settings')}/>
                     ),
                 }}
             />

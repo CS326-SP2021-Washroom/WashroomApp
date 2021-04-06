@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         marginHorizontal: 4,
         marginVertical: 6,
-        flex: 1
+        flex: 1,
+        opacity: 0.9                                //Optional
     },
     circleCard: {
         borderRadius: 75,
