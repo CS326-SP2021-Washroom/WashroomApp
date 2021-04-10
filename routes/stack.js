@@ -25,14 +25,14 @@ export default function Navigator( {navigation} ) {
             <Stack.Screen
                 name="Washroom"
                 component={Home}
-                options={{
+                options={({navigation}) => ({
                     title: 'Washroom',
                     headerTitleAlign: {textAlign:'center'},
                     headerRight: () => (
                         <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
                         onPress={() => navigation.navigate('Settings')}/>       //navigation returns an error
                     ),
-                }}
+                })}
             />
             <Stack.Screen
                 name="Dorm"
