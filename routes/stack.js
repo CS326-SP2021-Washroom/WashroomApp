@@ -37,37 +37,37 @@ export default function Navigator( {navigation} ) {
             <Stack.Screen
                 name="Dorm"
                 component={Dorm}
-                options={{
+                options={({navigation}) => ({
                     title: 'Dorm',
                     headerTitleAlign: {textAlign:'center'},
                     headerRight: () => (
                         <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
                         onPress={() => navigation.navigate('Settings')}/>
                     ),
-                }}
+                })}
             />
             <Stack.Screen
                 name="Apartment"
                 component={Apartment}
-                options={{
+                options={({navigation}) => ({
                     title: 'Apartment',
                     headerTitleAlign: {textAlign:'center'},
                     headerRight: () => (
                         <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
                         onPress={() => navigation.navigate('Settings')}/>
                     ),
-                }}
+                })}
             />
             <Stack.Screen
                 name="Watcher"
                 component={Watcher}
-                options={{
+                options={({navigation}) => ({
                     title: 'Watcher',
                     headerTitleAlign: {textAlign:'center'},
                     headerRight: () => (
                         <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}} onPress={() => navigation.navigate('Settings')}/>
                     ),
-                }}
+                })}
             />
             <Stack.Screen
                 name="Settings"

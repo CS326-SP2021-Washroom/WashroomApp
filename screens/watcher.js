@@ -39,11 +39,36 @@ export default function Watcher({ navigation }) {
         console.log("onMessageArrived:"+message.payloadString);
       }
       
-      const client = new Paho.MQTT.Client('test.mosquitto.org', 1883, 'ajb247');
+      const client = new Paho.MQTT.Client('iot.cs.calvin.edu', 8883, 'ajb247/app');
       client.onConnectionLost = onConnectionLost;
       client.onMessageArrived = onMessageArrived;
       client.connect({ onSuccess:onConnect, useSSL: true });
 
+    // ################################################################################
+    // const client = new Mqtt.Client('tcp://iot.cs.calvin.edu:8883');
+    // client.connect({
+    //     clientId: 'ajb247/app',
+    //     username: 'cs326',
+    //     password: 'piot'
+    // }, err => {});
+    
+    // client.on(Mqtt.Event.Message, (topic, message) => {
+    //     console.log('Mqtt Message:', topic, message.toString());
+    // });
+    
+    // client.on(Mqtt.Event.Connect, () => {
+    //     console.log('MQTT Connect');
+    //     client.subscribe(['#'], [0]);
+    // });
+    
+    // client.on(Mqtt.Event.Error, (error) => {
+    //     console.log('MQTT Error:', error);
+    // });
+    
+    // client.on(Mqtt.Event.Disconnect, (cause) => {
+    //     console.log('MQTT Disconnect:', cause);
+    // });
+    // ################################################################################
 
     const [washers, setWashers] = useState([            //Needs to be renamed, does not reference the apartments
         { title: 'Alpha', key: '1' },

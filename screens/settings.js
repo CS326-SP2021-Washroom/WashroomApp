@@ -12,7 +12,7 @@ export default function Settings({ navigation }) {
     return (
         <Styler>
             <View style={styles.bar}>
-                <Text style={styles.barContent}>Settings{data.firstname}</Text>
+                <Text style={styles.barContent}>Settings</Text>
             </View>
         </Styler>
     );
