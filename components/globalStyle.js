@@ -42,5 +42,19 @@ export const globalStyles = StyleSheet.create({
       background: {
         width: '100%',
         height: '100%'
-      }
+      },
+      bar: {
+        backgroundColor: "#6699ff",
+        alignItems: 'stretch',
+        opacity: 0.7,
+        // marginVertical: 15,
+      },
+      barContent: {
+        marginHorizontal: 18,
+        marginVertical: 20,
+        fontSize: 18,
+        fontWeight: 'bold',
+        // color: colorCodes.cardText,
+        textAlign: 'center',
+      },
 })

@@ -5,16 +5,33 @@ import { View, StyleSheet } from 'react-native';
  * Card constructs different styles of cards 
  * @author Andrew Baker (andrewJamesBaker)
  * @param {any} props
- * @return {View} card content for either circle or regular card
+ * @return {View} bar, similiar to the card
  */
 export default function Bar(props) {
 
     return (
         //props.style allows you to pass in custom styles
-        <View style={[(props.type === 'circle' ? styles.circleCard : styles.card), props.style]}>
-                <View style={styles.cardContent}>
+        <View style={styles.bar}>
+                <View style={styles.barContent}>
                     { props.children }
                 </View>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    bar: {
+      backgroundColor: "#6699ff",
+      alignItems: 'stretch',
+      opacity: 0.7,
+      // marginVertical: 15,
+    },
+    barContent: {
+      marginHorizontal: 18,
+      marginVertical: 20,
+      fontSize: 18,
+      fontWeight: 'bold',
+      // color: colorCodes.cardText,
+      textAlign: 'center',
+    },
+  })

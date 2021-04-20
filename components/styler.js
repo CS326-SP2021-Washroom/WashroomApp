@@ -6,7 +6,7 @@ import { globalStyles } from '../components/globalStyle'
  * Card constructs different styles of cards 
  * @author Andrew Baker (andrewJamesBaker)
  * @param {any} props
- * @return {View} card content for either circle or regular card
+ * @return {View} wrapper for screens to easily add backgrounds
  */
 
   const background = {uri: 'https://images.pexels.com/photos/2853937/pexels-photo-2853937.jpeg?cs=srgb&dl=water-bubbles-2853937.jpg&fm=jpg'}
@@ -17,7 +17,7 @@ export default function Card(props) {
 
     return (
         //props.style allows you to pass in custom styles
-        <View>
+        <View style={{flex: 1}}>
             <ImageBackground source={background} style={globalStyles.background}>
                 {props.children}
             </ImageBackground>
