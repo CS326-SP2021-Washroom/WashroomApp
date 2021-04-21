@@ -18,7 +18,7 @@ export default function Card(props) {
     return (
         //props.style allows you to pass in custom styles
         <View style={{flex: 1}}>
-            <ImageBackground source={background} style={globalStyles.background}>
+            <ImageBackground source={background} style={globalStyles.background} blurRadius = {0}>
                 {props.children}
             </ImageBackground>
         </View>

@@ -23,10 +23,9 @@ export default function Navigator( {navigation} ) {
             headerStyle:{backgroundColor:'#6699ff'}
         }}>
             <Stack.Screen
-                name="Washroom"
+                name="Calvin Washroom"
                 component={Home}
                 options={({navigation}) => ({
-                    title: 'Washroom',
                     headerTitleAlign: {textAlign:'center'},
                     headerRight: () => (
                         <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
@@ -38,7 +37,6 @@ export default function Navigator( {navigation} ) {
                 name="Dorm"
                 component={Dorm}
                 options={({navigation}) => ({
-                    title: 'Dorm',
                     headerTitleAlign: {textAlign:'center'},
                     headerRight: () => (
                         <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
@@ -50,7 +48,6 @@ export default function Navigator( {navigation} ) {
                 name="Apartment"
                 component={Apartment}
                 options={({navigation}) => ({
-                    title: 'Apartment',
                     headerTitleAlign: {textAlign:'center'},
                     headerRight: () => (
                         <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
@@ -73,7 +70,6 @@ export default function Navigator( {navigation} ) {
                 name="Settings"
                 component={Settings}
                 options={{
-                    title: 'Settings',
                     headerTitleAlign: {textAlign:'center'},
                 }}
             />
