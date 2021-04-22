@@ -9,12 +9,14 @@ import Paho from '../components/paho-mqtt'
 
 export default function Watcher({ navigation }) {
 
-    client = new Paho.Client(host = 'mqtt.eclipseprojects.io/mqtt', port = 80, clientId = 'washroom');
+    client = new Paho.Client(host = 'iot.cs.calvin.edu', port = 8080, clientId = 'washroom');
     client.onMessageArrived = onMessageArrived;
     var options = {
         useSSL: false,
         keepAliveInterval: 60,
         onSuccess: onConnect,
+        password: 'piot',
+        userName: 'cs326',
     };
     client.connect(options);
     function onConnect() {
@@ -35,8 +37,6 @@ export default function Watcher({ navigation }) {
 
     return (
         <Styler>
-            {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.js" type="text/javascript"></script> */}
-
             <View style={globalStyles.containerAcross}>
                 <View style={globalStyles.container}>
                     <Text style={globalStyles.titleText}> Washers </Text>
