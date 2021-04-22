@@ -7,7 +7,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import Styler from '../components/styler'
 import Paho from '../components/paho-mqtt'
 
-export default function Watcher({ navigation }) {
+export default function Watcher({ route,  navigation }) {
 
     client = new Paho.Client(host = 'iot.cs.calvin.edu', port = 8080, clientId = 'washroom');
     client.onMessageArrived = onMessageArrived;
@@ -21,14 +21,14 @@ export default function Watcher({ navigation }) {
     client.connect(options);
     function onConnect() {
         console.log("Connected!");
-        client.subscribe("cs326/message");
+        client.subscribe("cs326/washroom/" + route.params.title);
+        client.publish("cs326/washroom/" + route.params.title, "request")
     }
     function onMessageArrived(message) {
         console.log("Message Arrived:" + message.payloadString);
-        document.getElementById("msg").innerHTML = message.payloadString;
     }
 
-    const [washers, setWashers] = useState([            //Needs to be renamed, does not reference the apartments
+    const [washers, setWashers] = useState([
         { title: 'Washer 1:', key: '1', test: true },
         { title: 'Washer 2:', key: '2', test: true },
         { title: 'Washer 3:', key: '3', test: false },

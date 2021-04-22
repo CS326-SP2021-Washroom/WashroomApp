@@ -18,11 +18,9 @@ export default function Settings({ navigation }) {
       <View style={styles.bar}>
         <Text style={styles.barContent}>Settings</Text>
       </View>
-      {/* <TouchableOpacity style={{ flex: 1 }} onPress={() => {mqtt.connect('mqtt://test.mosquitto.org') }> */}
       <Card>
         <Text>Dorms</Text>
       </Card>
-      {/* </TouchableOpacity>   */}
     </Styler>
   );
 }

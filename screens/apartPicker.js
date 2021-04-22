@@ -34,24 +34,24 @@ export default function Apartment({ navigation }) {
 
   return (
     <Styler>
-        <View style={globalStyles.containerAcross}>
-          <FlatList style={globalStyles.list} data={courtyards} renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
-              <Card>
-                <Text>{item.title}</Text>
-              </Card>
-            </TouchableOpacity>
-          )} />
+      <View style={globalStyles.containerAcross}>
+        <FlatList style={globalStyles.list} data={courtyards} renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher', item.title)}>
+            <Card>
+              <Text>{item.title}</Text>
+            </Card>
+          </TouchableOpacity>
+        )} />
 
-          <FlatList style={globalStyles.list} data={apartments} renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
-              <Card>
-                <Text>{item.title}</Text>
-              </Card>
-            </TouchableOpacity>
-          )} />
+        <FlatList style={globalStyles.list} data={apartments} renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher', item.title)}>
+            <Card>
+              <Text>{item.title}</Text>
+            </Card>
+          </TouchableOpacity>
+        )} />
 
-        </View>
-        </Styler>
+      </View>
+    </Styler>
   );
 }
