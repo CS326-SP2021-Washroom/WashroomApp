@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert, RefreshControl } from 'react-native';
 import Card from '../components/card';
 import { globalStyles } from '../components/globalStyle'
 import CountDown from 'react-native-countdown-component'
@@ -7,48 +7,100 @@ import { FlatList } from 'react-native-gesture-handler';
 import Styler from '../components/styler'
 import Paho from '../components/paho-mqtt'
 
-export default function Watcher({ route,  navigation }) {
+/**
+ * Watcher displays current washroom data
+ * @author Andrew Baker (andrewJamesBaker)
+ * @param {any} navigation
+ * @return {Stack} 
+ */
 
-    client = new Paho.Client(host = 'iot.cs.calvin.edu', port = 8080, clientId = 'washroom');
-    client.onMessageArrived = onMessageArrived;
-    var options = {
-        useSSL: false,
+export default function Watcher({ route, navigation }) {
+
+    client = new Paho.Client(host = 'iot.cs.calvin.edu', port = 8083, clientId = 'washroom');   //Creates new client that connects to host (calvin IoT) on specific port
+    client.onMessageArrived = onMessageArrived;     //Defines reaction to a new message 
+    client.onConnectionLost = onConnectionLost;
+    var options = {     //options for the MQTT connection
+        useSSL: true,
         keepAliveInterval: 60,
         onSuccess: onConnect,
+        onFailure: onFail,
         password: 'piot',
         userName: 'cs326',
     };
     client.connect(options);
+
+    //On connection success to the host
     function onConnect() {
         console.log("Connected!");
-        client.subscribe("cs326/washroom/" + route.params.title);
-        client.publish("cs326/washroom/" + route.params.title, "request")
+        client.subscribe("cs326/washroom/" + route.params.title);   //Subscribe to the apartment or dorms topic
+        client.publish("cs326/washroom/" + route.params.title + "/request", "request")   //Sends request message to the backend raspberry pi in a different topic to avoid confusion in the data interpreter. 
     }
+
+    // On failure to connect to the host
+    function onFail(context) {
+        console.log(context);
+        console.log("Connection failed!");
+        // on screen pop up to show failure to connect
+        Alert.alert('Failure to Connect',
+            "Unable to connect to host. Try again later.",
+            [
+                { text: "OK" }
+            ],
+        )
+    }
+
+    // Called when a message arrives from the subscribed topic
     function onMessageArrived(message) {
         console.log("Message Arrived:" + message.payloadString);
     }
 
-    const [washers, setWashers] = useState([
+    // called when the client loses its connection
+    function onConnectionLost(responseObject) {
+        if (responseObject.errorCode !== 0) {
+            console.log("Connection Lost:" + responseObject.errorMessage);
+            // Alert.alert('Connection Lost',
+            //     "Connection to host lost. Try again later.",
+            //     [
+            //         { text: "OK" }
+            //     ],
+            // )
+        }
+    }
+    const [washers] = useState([
         { title: 'Washer 1:', key: '1', test: true },
         { title: 'Washer 2:', key: '2', test: true },
         { title: 'Washer 3:', key: '3', test: false },
         { title: 'Washer 4:', key: '4', test: true },
     ])
 
+    const wait = (timeout) => {
+        return new Promise(resolve => setTimeout(resolve, timeout));
+    }
+
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        wait(2000).then(() => setRefreshing(false));
+    }, []);
+
     return (
         <Styler>
             <View style={globalStyles.containerAcross}>
                 <View style={globalStyles.container}>
-                    <Text style={globalStyles.titleText}> Washers </Text>
-                    <FlatList style={globalStyles.list} data={washers} renderItem={({ item }) => (
-                        <View>
-                            <Card style={{ backgroundColor: (item.test ? 'green' : 'red') }}>
-                                <Text style={{ fontWeight: "bold" }}>
-                                    {item.title}
-                                    {item.test ? 'OFF' : 'ON'}
-                                </Text>
-                            </Card>
-                            {/* <Text style={globalStyles.subtitleText}>{item.title}</Text>
+                    <FlatList style={globalStyles.list} data={washers} refreshControl={
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
+                        />} renderItem={({ item }) => (
+                            <View>
+                                <Card style={{ backgroundColor: (item.test ? 'green' : 'red') }}>
+                                    <Text style={{ fontWeight: "bold" }}>
+                                        {item.title}
+                                        {item.test ? 'OFF' : 'ON'}
+                                    </Text>
+                                </Card>
+                                {/* <Text style={globalStyles.subtitleText}>{item.title}</Text>
                             <CountDown
                                 until={0}
                                 // onFinish={() => alert('Finished')}
@@ -58,32 +110,9 @@ export default function Watcher({ route,  navigation }) {
                                 digitStyle={globalStyles.digitStyleWasher}
                                 digitTxtStyle={globalStyles.digitTextStyleWasher}
                             /> */}
-                        </View>
-                    )} />
+                            </View>
+                        )} />
 
-                </View>
-                <View style={globalStyles.container}>
-                    <Text style={globalStyles.titleText}>Dryers</Text>
-                    <FlatList style={globalStyles.list} data={washers} renderItem={({ item }) => (
-                        <View>
-                            <Card style={{ backgroundColor: (item.test ? 'green' : 'red') }}>
-                                <Text style={{ fontWeight: "bold" }}>
-                                    {item.title}
-                                    {item.test ? 'OFF' : 'ON'}
-                                </Text>
-                            </Card>
-                            {/* <Text style={globalStyles.subtitleText}>{item.title}</Text>
-                            <CountDown
-                                until={0}
-                                // onFinish={() => alert('Finished')}
-                                onPress={() => alert('Hello World')}
-                                size={20}
-                                timeToShow={['M', 'S']}
-                                digitStyle={globalStyles.digitStyleDryer}
-                                digitTxtStyle={globalStyles.digitTextStyleDryer}
-                            /> */}
-                        </View>
-                    )} />
                 </View>
             </View>
         </Styler>

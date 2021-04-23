@@ -3,7 +3,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {MaterialIcons} from '@expo/vector-icons';
 import Home from '../screens/home';
 import Dorm from '../screens/dormPicker';
-import Settings from '../screens/settings';
 import Watcher from '../screens/watcher';
 import Apartment from '../screens/apartPicker';
 
@@ -27,10 +26,6 @@ export default function Navigator( {navigation} ) {
                 component={Home}
                 options={({navigation}) => ({
                     headerTitleAlign: {textAlign:'center'},
-                    headerRight: () => (
-                        <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
-                        onPress={() => navigation.navigate('Settings')}/>       //navigation returns an error
-                    ),
                 })}
             />
             <Stack.Screen
@@ -38,10 +33,6 @@ export default function Navigator( {navigation} ) {
                 component={Dorm}
                 options={({navigation}) => ({
                     headerTitleAlign: {textAlign:'center'},
-                    headerRight: () => (
-                        <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
-                        onPress={() => navigation.navigate('Settings')}/>
-                    ),
                 })}
             />
             <Stack.Screen
@@ -49,29 +40,14 @@ export default function Navigator( {navigation} ) {
                 component={Apartment}
                 options={({navigation}) => ({
                     headerTitleAlign: {textAlign:'center'},
-                    headerRight: () => (
-                        <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}}
-                        onPress={() => navigation.navigate('Settings')}/>
-                    ),
                 })}
             />
             <Stack.Screen
                 name="Watcher"
                 component={Watcher}
                 options={({navigation}) => ({
-                    title: 'Watcher',
                     headerTitleAlign: {textAlign:'center'},
-                    headerRight: () => (
-                        <MaterialIcons name="settings" size={27} color='#333' style={{paddingRight: 15}} onPress={() => navigation.navigate('Settings')}/>
-                    ),
                 })}
-            />
-            <Stack.Screen
-                name="Settings"
-                component={Settings}
-                options={{
-                    headerTitleAlign: {textAlign:'center'},
-                }}
             />
         </Stack.Navigator>
     );
