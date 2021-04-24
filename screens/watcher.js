@@ -16,7 +16,7 @@ import Paho from '../components/paho-mqtt'
 
 export default function Watcher({ route, navigation }) {
     
-    const [machines, setMachines] = useState([
+    var [machines] = useState([
         { title: 'Washer 1:', key: '1', test: true },
         { title: 'Washer 2:', key: '2', test: true },
         { title: 'Dryer 1:', key: '3', test: true },
@@ -59,11 +59,13 @@ export default function Watcher({ route, navigation }) {
     // Called when a message arrives from the subscribed topic
     function onMessageArrived(message) {
         console.log("Message Arrived:" + message.payloadString);
-        for (i = 0; 1 < message.payloadString.length; i++){
+        // console.log(message.payloadString.length)
+        for (i = 0; i < message.payloadString.length; i++){
             if (message.payloadString[i] == '1'){
                 machines[i].test = false
             }
         }
+        console.log(machines)
     }
 
     // called when the client loses its connection
