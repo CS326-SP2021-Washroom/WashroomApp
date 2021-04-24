@@ -63,9 +63,11 @@ export default function Watcher({ route, navigation }) {
         for (i = 0; i < message.payloadString.length; i++){
             if (message.payloadString[i] == '1'){
                 machines[i].test = false
+            } else {
+                machines[i].test = true
             }
         }
-        console.log(machines)
+        // console.log(machines)
     }
 
     // called when the client loses its connection

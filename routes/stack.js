@@ -46,6 +46,7 @@ export default function Navigator( {navigation} ) {
                 name="Watcher"
                 component={Watcher}
                 options={({navigation}) => ({
+                    title: "Machine Status",
                     headerTitleAlign: {textAlign:'center'},
                 })}
             />
