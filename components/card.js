@@ -5,7 +5,7 @@ import { View, StyleSheet } from 'react-native';
  * Card constructs different styles of cards 
  * @author Andrew Baker (andrewJamesBaker)
  * @param {any} props
- * @return {View} card content for either circle or regular card
+ * @return {View} card content for either circle or regular card, adapted from the habit buddy application, which was adapted from net ninja react native tutorials.
  */
 export default function Card(props) {
 

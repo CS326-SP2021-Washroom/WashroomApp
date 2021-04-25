@@ -9,12 +9,14 @@ import Apartment from '../screens/apartPicker';
 const Stack = createStackNavigator();
 
 /** 
- * HomeStack creates stack for home screen navigation 
+ * Stack creates stack for screen navigation, one screen for navigation accross the app 
  * @author Andrew Baker (andrewJamesBaker)
  * @default {Home}
  * @param {var} navigation
  * @return {property} Navigator
  */
+
+// Creates the navigator, called in app.js
 export default function Navigator( {navigation} ) {
 
     return (
@@ -46,7 +48,7 @@ export default function Navigator( {navigation} ) {
                 name="Watcher"
                 component={Watcher}
                 options={({navigation}) => ({
-                    title: "Machine Status",
+                    title: "Machine Status",            //Rename for the header, Machine Status seemed easier to understand than Watcher
                     headerTitleAlign: {textAlign:'center'},
                 })}
             />

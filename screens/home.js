@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, } from 'react-native';
 import Card from '../components/card';
 import { globalStyles } from '../components/globalStyle'
@@ -16,12 +16,13 @@ export default function Home({ navigation }) {
     return (
         <Styler>
             <View style={globalStyles.container}>
+                {/* Large dorm button, navigates to the dormpicker screen */}
                 <TouchableOpacity style={{ flex: 1 }} onPress={() => navigation.navigate('Dorm')}>
                     <Card>
                         <Text style={globalStyles.titleText}>Dorms</Text>
                     </Card>
                 </TouchableOpacity>
-
+                {/* Large apartment button, navigates to the apartpicker screen */}
                 <TouchableOpacity style={{ flex: 1 }} onPress={() => navigation.navigate('Apartment')}>
                     <Card>
                         <Text style={globalStyles.titleText}>Knollcrest East</Text>

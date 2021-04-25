@@ -5,7 +5,7 @@ import { View, StyleSheet } from 'react-native';
  * Card constructs different styles of cards 
  * @author Andrew Baker (andrewJamesBaker)
  * @param {any} props
- * @return {View} bar, similiar to the card
+ * @return {View} bar, similiar to the card, not utilized in the final rendition of the project
  */
 export default function Bar(props) {
 

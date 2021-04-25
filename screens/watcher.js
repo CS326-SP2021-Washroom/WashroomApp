@@ -15,7 +15,7 @@ import Paho from '../components/paho-mqtt'
  */
 
 export default function Watcher({ route, navigation }) {
-    
+
     var [machines] = useState([
         { title: 'Washer 1:', key: '1', test: true },
         { title: 'Washer 2:', key: '2', test: true },
@@ -55,22 +55,23 @@ export default function Watcher({ route, navigation }) {
             ],
         )
     }
-    
-    // Called when a message arrives from the subscribed topic
+
+    // Called when a message arrives from the subscribed topic, interprets the data coming in from the sensor source
     function onMessageArrived(message) {
         console.log("Message Arrived:" + message.payloadString);
         // console.log(message.payloadString.length)
-        for (i = 0; i < message.payloadString.length; i++){
-            if (message.payloadString[i] == '1'){
-                machines[i].test = false
-            } else {
-                machines[i].test = true
+        if (message.payloadString.length == 4) {            // Confirm that the string is no longer than 4 char long, make sure invalid data is not being read in. 
+            for (i = 0; i < message.payloadString.length; i++) {
+                if (message.payloadString[i] == '1') {
+                    machines[i].test = false
+                } else {
+                    machines[i].test = true
+                }
             }
         }
-        // console.log(machines)
     }
 
-    // called when the client loses its connection
+    // called when the client loses its connection. Originally had an alert for loss of connection, but with refreshing options and shifting between dorms and apartments, the message popped up to much.
     function onConnectionLost(responseObject) {
         if (responseObject.errorCode !== 0) {
             console.log("Connection Lost:" + responseObject.errorMessage);
@@ -83,12 +84,15 @@ export default function Watcher({ route, navigation }) {
         }
     }
 
+    // Code for the refresh element in the flat list. Creates a wait time for the refresh. 
     const wait = (timeout) => {
         return new Promise(resolve => setTimeout(resolve, timeout));
     }
 
+    // Refresh state, false when not currently refreshing, true when in the refreshing state.
     const [refreshing, setRefreshing] = React.useState(false);
 
+    // Refresh function called in the flatlist, sets refreshing to true, waits for 2000 milliseconds and then returns refreshing back to false. 
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
         wait(2000).then(() => setRefreshing(false));
@@ -110,6 +114,7 @@ export default function Watcher({ route, navigation }) {
                                         {item.test ? 'OFF' : 'ON'}
                                     </Text>
                                 </Card>
+                                {/* TIMER CODE, SCRAPPED DUE TO TIME AND COMPLEXITY WITH THE SENSOR SETUP. */}
                                 {/* <Text style={globalStyles.subtitleText}>{item.title}</Text>
                             <CountDown
                                 until={0}
