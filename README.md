@@ -1,5 +1,5 @@
 # WashroomApp  
-** Written by Andrew Baker and Josh Ridder **  
+**Written by Andrew Baker and Josh Ridder**  
 
 ### Background
 The Calvin Washroom app provides a client for users to view washroom status from the Raspberry Pi setup in on campus apartment and dorm washrooms. Code for the Washroom App has been largely original, with some code having been adapted from the [Habit Buddy app](https://github.com/calvin-cs262-fall2020-teamH/habitbuddy-client). Calvin Washroom is functional for all dorm and apartment sensor set ups and can be deployed accross campus if desired.   
