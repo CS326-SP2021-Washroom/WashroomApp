@@ -15,6 +15,6 @@ git clone https://github.com/CS326-SP2021-Washroom/WashroomApp.git
 To run the app on Expo, use the following commands:
 ```
 npm install
-npm start
+expo start
 ```
 Doing so will either open the default web browser with a status page or display a QR code within the terminal. Scan the QR code with your device or Android/IOS simulator to use the app.
