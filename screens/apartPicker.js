@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ImageBackground, StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import React, { useState} from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Card from '../components/card';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
@@ -15,7 +15,8 @@ import Styler from '../components/styler'
 
 export default function Apartment({ navigation }) {
 
-  const [apartments, setApartments] = useState([
+  // Apartment options, broken up into the courtyard apartments and non-courtyards, so to not have one giant list, similiar to the dorms 
+  const [apartments] = useState([
     { title: 'Theta', key: '1' },
     { title: 'Epsilon', key: '2' },
     { title: 'Phi', key: '3' },
@@ -24,7 +25,7 @@ export default function Apartment({ navigation }) {
     { title: 'Lambda', key: '6' },
   ])
 
-  const [courtyards, setCourtyards] = useState([
+  const [courtyards] = useState([
     { title: 'Alpha', key: '1' },
     { title: 'Beta', key: '2' },
     { title: 'Delta', key: '3' },
@@ -32,26 +33,27 @@ export default function Apartment({ navigation }) {
     { title: 'Kappa', key: '5' },
   ])
 
+  // shows two lists of buttons, navigating to the washroom watcher
   return (
     <Styler>
-        <View style={globalStyles.containerAcross}>
-          <FlatList style={globalStyles.list} data={courtyards} renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
-              <Card>
-                <Text>{item.title}</Text>
-              </Card>
-            </TouchableOpacity>
-          )} />
+      <View style={globalStyles.containerAcross}>
+        <FlatList style={globalStyles.list} data={courtyards} renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher', item.title)}>
+            <Card>
+              <Text>{item.title}</Text>
+            </Card>
+          </TouchableOpacity>
+        )} />
 
-          <FlatList style={globalStyles.list} data={apartments} renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
-              <Card>
-                <Text>{item.title}</Text>
-              </Card>
-            </TouchableOpacity>
-          )} />
+        <FlatList style={globalStyles.list} data={apartments} renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher', item.title)}>
+            <Card>
+              <Text>{item.title}</Text>
+            </Card>
+          </TouchableOpacity>
+        )} />
 
-        </View>
-        </Styler>
+      </View>
+    </Styler>
   );
 }

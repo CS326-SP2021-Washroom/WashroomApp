@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {
-  ImageBackground, StyleSheet, View, Text, TouchableOpacity, TouchableWithoutFeedback, Keyboard,
-  TextInput, Alert
-} from 'react-native';
+import React, { useState} from 'react';
+import { View, Text, TouchableOpacity} from 'react-native';
 import Card from '../components/card';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FlatList } from 'react-native-gesture-handler';
@@ -18,19 +15,22 @@ import Styler from '../components/styler'
 
 export default function Dorm({ navigation }) {
 
-  const [maleDorms, setMaleDorms] = useState([
+  // Dorm names, split into male, female, and special so that the list will be split into a manageable screen rather than a list
+  // Double name dorms (example: Van Dellen) have had the spaces taken out so they can be used as topics for mqtt messages
+  // The dorms have been positioned so that each is right next to its actual, adjoining dorm (example: Bolt-Heyns-Timmer)
+  const [maleDorms] = useState([
     { title: 'Bolt', key: '1' },
     { title: 'Huzienga', key: '2' },
     { title: 'Shultze', key: '3' },
-    { title: 'Van Dellen', key: '4' },
+    { title: 'VanDellen', key: '4' },
     { title: 'Beets', key: '5' },
     { title: 'VanderWerp', key: '6' },
     { title: 'Boer', key: '7' },
   ])
 
-  const [femaleDorms, setFemaleDorms] = useState([
+  const [femaleDorms] = useState([
     { title: 'Heyns', key: '1' },
-    { title: 'Eldersveld', key: '2' },
+    { title: 'Kalsbeek', key: '2' },
     { title: 'Eldersveld', key: '3' },
     { title: 'Rooks', key: '4' },
     { title: 'Veenstra', key: '5' },
@@ -38,16 +38,17 @@ export default function Dorm({ navigation }) {
     { title: 'Bennick', key: '7' },
   ])
 
-  const [extraDorms, setExtraDorms] = useState([
+  const [extraDorms] = useState([
     { title: 'Timmer', key: '1' },
-    { title: 'Van Reken', key: '2' },
+    { title: 'VanReken', key: '2' },
   ])
 
+  // shows two lists of buttons, navigating to the washroom watcher
   return (
     <Styler>
       <View style={globalStyles.containerAcross}>
         <FlatList style={globalStyles.list} data={maleDorms} renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher', item.title)}>
             <Card>
               <Text>{item.title}</Text>
             </Card>
@@ -55,7 +56,7 @@ export default function Dorm({ navigation }) {
         )} />
 
         <FlatList style={globalStyles.list} data={femaleDorms} renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher', item.title)}>
             <Card>
               <Text>{item.title}</Text>
             </Card>
@@ -63,7 +64,7 @@ export default function Dorm({ navigation }) {
         )} />
 
         <FlatList style={globalStyles.list} data={extraDorms} renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => navigation.navigate('Watcher')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Watcher', item.title)}>
             <Card>
               <Text>{item.title}</Text>
             </Card>

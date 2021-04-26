@@ -9,6 +9,9 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 
 import expo.modules.splashscreen.singletons.SplashScreen;
 import expo.modules.splashscreen.SplashScreenImageResizeMode;
+import com.tuanpm.RCTMqtt.*; // import
+
+new RCTMqttPackage()           // as a child of the getPackages() returned array
 
 public class MainActivity extends ReactActivity {
   @Override

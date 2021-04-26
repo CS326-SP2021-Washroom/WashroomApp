@@ -1,23 +1,22 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-
-import Header from '../components/header';
+import {MaterialIcons} from '@expo/vector-icons';
 import Home from '../screens/home';
 import Dorm from '../screens/dormPicker';
-import Settings from '../screens/settings';
 import Watcher from '../screens/watcher';
 import Apartment from '../screens/apartPicker';
 
 const Stack = createStackNavigator();
 
 /** 
- * HomeStack creates stack for home screen navigation 
+ * Stack creates stack for screen navigation, one screen for navigation accross the app 
  * @author Andrew Baker (andrewJamesBaker)
  * @default {Home}
  * @param {var} navigation
  * @return {property} Navigator
  */
+
+// Creates the navigator, called in app.js
 export default function Navigator( {navigation} ) {
 
     return (
@@ -25,37 +24,38 @@ export default function Navigator( {navigation} ) {
             headerStyle:{backgroundColor:'#6699ff'}
         }}>
             <Stack.Screen
-                name="Washroom"
+                name="Calvin Washroom"
                 component={Home}
-                options={{
-                    title: 'Washroom',
+                options={({navigation}) => ({
                     headerTitleAlign: {textAlign:'center'},
-                }}
+                })}
             />
             <Stack.Screen
                 name="Dorm"
                 component={Dorm}
-                options={{
-                    title: 'Dorm',
+                options={({navigation}) => ({
                     headerTitleAlign: {textAlign:'center'},
-                }}
+                })}
             />
             <Stack.Screen
                 name="Apartment"
                 component={Apartment}
-                options={{
-                    title: 'Apartment',
+                options={({navigation}) => ({
                     headerTitleAlign: {textAlign:'center'},
-                }}
+                })}
             />
             <Stack.Screen
                 name="Watcher"
                 component={Watcher}
-                options={{
-                    title: 'Watcher',
+                options={({navigation}) => ({
+                    title: "Machine Status",            //Rename for the header, Machine Status seemed easier to understand than Watcher
                     headerTitleAlign: {textAlign:'center'},
-                }}
+                })}
             />
         </Stack.Navigator>
     );
 };
+
+
+
+
