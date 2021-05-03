@@ -31,8 +31,8 @@ export default function Watcher({ route, navigation }) {
         keepAliveInterval: 60,
         onSuccess: onConnect,
         onFailure: onFail,
-        password: 'piot',
-        userName: 'cs326',
+        password: 'NA',
+        userName: 'NA',
     };
     client.connect(options);
 
