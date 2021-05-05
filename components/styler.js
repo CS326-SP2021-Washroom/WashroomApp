@@ -10,7 +10,7 @@ import { globalStyles } from '../components/globalStyle'
  */
 
   const background = {uri: 'https://images.pexels.com/photos/2853937/pexels-photo-2853937.jpeg?cs=srgb&dl=water-bubbles-2853937.jpg&fm=jpg'}
-
+  // Background image for use on all screens using the styler.
 
 export default function Card(props) {
 
