@@ -14,6 +14,9 @@ const Stack = createStackNavigator();
  * @default {Home}
  * @param {var} navigation
  * @return {property} Navigator
+ *
+ * Creates a single stack for the screens within the app, letting the user go from home to either dorm or apartment and finally to a specific watcher screen.
+ * Specifies flow of screens and the alignment of title for each screen.
  */
 
 // Creates the navigator, called in app.js
