@@ -33,7 +33,8 @@ export default function Apartment({ navigation }) {
     { title: 'Kappa', key: '5' },
   ])
 
-  // shows two lists of buttons, navigating to the washroom watcher
+// Shows two lists of buttons, navigating to the washroom watcher
+// On navigation the watcher is passed the name of the apartment, so that it can request and recieve from the proper MQTT topic.    
   return (
     <Styler>
       <View style={globalStyles.containerAcross}>
