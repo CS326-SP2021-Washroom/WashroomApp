@@ -39,6 +39,7 @@ export default function Watcher({ route, navigation }) {
     //On connection success to the host
     function onConnect() {
         console.log("Connected!");
+//         Publishes and subscribes to the name that was passed in from either the apartment or dorm picker screens. A different topic is published and subscribed based on the card selected in either picker. 
         client.publish("cs326/washroom/" + route.params + "/request", "request")   //Sends request message to the backend raspberry pi in a different topic to avoid confusion in the data interpreter. 
         client.subscribe("cs326/washroom/" + route.params);   //Subscribe to the apartment or dorms topic
     }
@@ -56,12 +57,12 @@ export default function Watcher({ route, navigation }) {
         )
     }
 
-    // Called when a message arrives from the subscribed topic, interprets the data coming in from the sensor source
+    // Called when a message arrives from the subscribed topic, interprets the data coming in from the sensor source, presumably soon after connection and request is published. 
     function onMessageArrived(message) {
         console.log("Message Arrived:" + message.payloadString);
         // console.log(message.payloadString.length)
         if (message.payloadString.length == 4) {            // Confirm that the string is no longer than 4 char long, make sure invalid data is not being read in. 
-            for (i = 0; i < message.payloadString.length; i++) {
+            for (i = 0; i < message.payloadString.length; i++) {        // Interprets the data from the sensor unit, the string of length 4. If the corresponding part of the string is 1, then the machine is on, otherwise the machine is off. 
                 if (message.payloadString[i] == '1') {
                     machines[i].test = false
                 } else {
@@ -75,12 +76,6 @@ export default function Watcher({ route, navigation }) {
     function onConnectionLost(responseObject) {
         if (responseObject.errorCode !== 0) {
             console.log("Connection Lost:" + responseObject.errorMessage);
-            // Alert.alert('Connection Lost',
-            //     "Connection to host lost. Try again later.",
-            //     [
-            //         { text: "OK" }
-            //     ],
-            // )
         }
     }
 
@@ -114,7 +109,7 @@ export default function Watcher({ route, navigation }) {
                                         {item.test ? 'OFF' : 'ON'}
                                     </Text>
                                 </Card>
-                                {/* TIMER CODE, SCRAPPED DUE TO TIME AND COMPLEXITY WITH THE SENSOR SETUP. */}
+                                {/* TIMER CODE, SCRAPPED DUE TO TIME AND COMPLEXITY WITH THE SENSOR SETUP. LEFT IN DUE TO SIMPLICITY AND FUTURE WORK POSSIBILITIES. */}
                                 {/* <Text style={globalStyles.subtitleText}>{item.title}</Text>
                             <CountDown
                                 until={0}
