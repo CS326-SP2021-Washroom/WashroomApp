@@ -43,7 +43,8 @@ export default function Dorm({ navigation }) {
     { title: 'VanReken', key: '2' },
   ])
 
-  // shows two lists of buttons, navigating to the washroom watcher
+// Shows three lists of buttons, navigating to the washroom watcher
+// On navigation the watcher is passed the name of the dorm, so that it can request and recieve from the proper MQTT topic. 
   return (
     <Styler>
       <View style={globalStyles.containerAcross}>
