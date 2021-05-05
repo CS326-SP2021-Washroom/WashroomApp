@@ -18,3 +18,5 @@ npm install
 expo start
 ```
 Doing so will either open the default web browser with a status page or display a QR code within the terminal. Scan the QR code with your device or Android/IOS simulator to use the app.
+
+**ATTENTION: Username and password for MQTT broker have been omitted for security. Alter "Watcher.js" to use.**
